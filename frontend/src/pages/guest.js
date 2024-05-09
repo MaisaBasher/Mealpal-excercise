@@ -39,12 +39,17 @@ function Guest() {
           }
         });
       };
+    
+
     if(nerr) {
       document.getElementById('n').style.borderColor = 'red';
     }
     if(perr) {
       document.getElementById('p').style.borderColor = 'red';
     }
+
+
+    
     return (
       <div >
        
