@@ -18,7 +18,7 @@ function Guest() {
         setPhone(event.target.value);
       };
     
-    const handleButton = async (event) => {
+    const handleButton = (event) => {
         setPErr(false);
         setNErr(false);
         axios.post('http://localhost:8081',{name, phone})
@@ -49,7 +49,7 @@ function Guest() {
     }
 
 
-    
+
     return (
       <div >
        
