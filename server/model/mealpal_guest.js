@@ -50,7 +50,7 @@ function insertData(name, phone){
         if(err) throw new Error(err);
         console.log(err);
     })
-    console.log("data inserted");
+    
 
 }
 module.exports = {db, createDB, insertData};
