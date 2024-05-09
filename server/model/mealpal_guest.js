@@ -5,6 +5,10 @@ const db = mysql.createConnection({
     user: "root",
     password: ""
 });
+
+/*
+    Description: create the DB if doesn't exist
+*/
 function createDB(){
     db.connect((err)=>{
         if (err) throw new Error(err);
@@ -14,14 +18,16 @@ function createDB(){
             console.log("Database created");
             db.changeUser({database: 'MEALPAL'},(err)=>{
                 if(err) throw new Error(err);
-                createTable();
+                createGuestTable();
             })
 
         })
     })
 }
-
-function createTable(){
+/*
+    Description: create the Guest Table if doesn't exist
+*/
+function createGuestTable(){
     db.query(
         'CREATE TABLE IF NOT EXISTS guests(name VARCHAR(45),phone VARCHAR(11))'
     , (err) => {
@@ -29,13 +35,22 @@ function createTable(){
         console.log("Table created");
     })
 }
-function inserData(name, phone){
+
+/*
+    Parameters:
+        Name: string
+        Phone: String
+    Description: Insert the guest data in table
+*/
+
+function insertData(name, phone){
     db.query(
         'INSERT INTO guests (name, phone) VALUES(?,?)', [name, phone]
     , (err) => {
         if(err) throw new Error(err);
-        console.log("Table created");
+        console.log(err);
     })
+    console.log("data inserted");
 
 }
-module.exports = {db, createDB, inserData};
+module.exports = {db, createDB, insertData};
