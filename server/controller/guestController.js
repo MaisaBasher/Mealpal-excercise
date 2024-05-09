@@ -32,6 +32,9 @@ function guestController(name, phone){
     return res;
 
 }
+
+/* Description: Check if the phone number entered are all digits*/
+
 function containsOnlyDigits(str) {
     return /^\d+$/.test(str);
 }
